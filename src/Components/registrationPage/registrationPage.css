@@ -1,0 +1,97 @@
+.form{
+    background-color: #f4f4f4;
+    width:25%;
+    min-width: 460px;
+    height:50%;
+    position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;  	
+	margin: auto;
+}
+
+.loginForm{
+    background-color: #f4f4f4;
+    width:25%;
+    min-width: 460px;
+    height:35%;
+    position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;  	
+	margin: auto; 
+}
+
+
+input{
+    width:40%;
+    padding: 2%;
+    margin: 2% 0% 2% 2%;
+}
+
+input:focus{
+    border: 1px solid blue;
+}
+
+.singleInput{
+    width: 87%;
+}
+
+img{
+    display: block;
+    margin: auto;
+    margin-top: 1%;
+    width: 150px;
+    height: 150px;
+}
+
+
+.actionsDiv{
+    bottom: 10%;
+    width: 100%;
+    position: absolute;
+}
+
+button{
+    position: relative;
+    left: 5%;
+    box-shadow:inset 0px 1px 0px 0px #bbdaf7;
+	background:linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+	background-color:#79bbff;
+	border-radius:6px;
+	border:1px solid #84bbf3;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #528ecc;
+}
+
+button:hover{
+    background:linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
+	background-color:#378de5;
+}
+
+
+.loginSpan{
+    text-decoration: underline;
+    left: 15%;
+    position: relative;
+}
+
+.loginSpan:hover{
+    cursor: pointer;
+    color: #04b0e8;
+}
+
+.loginButton{
+    position: relative;
+    float: right;
+    margin-right: 10%;
+}
