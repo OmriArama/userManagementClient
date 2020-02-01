@@ -47,11 +47,9 @@ class RegistrationPage extends React.Component<Props, State>{
     }
 
     login = () => {
-        userManagementApi.searchByUserName(this.state.userName)
+        userManagementApi.Login(this.state.userName, this.state.password)
             .then(foundUser => {
-                if (foundUser.password === this.state.password) {
-                    this.props.loginUser(foundUser)
-                }
+                this.props.loginUser(foundUser)
             })
     }
 
@@ -100,8 +98,8 @@ class RegistrationPage extends React.Component<Props, State>{
                             </div></Fragment></div > :
                     <div>
                         <div className={'loginForm'}>
-                            <div style={{marginTop:'10%'}}>
-                            <div><input onChange={this.changeInputState} className={'singleInput'} type={'text'} name={'userName'} placeholder={'Username'} /></div>
+                            <div style={{ marginTop: '10%' }}>
+                                <div><input onChange={this.changeInputState} className={'singleInput'} type={'text'} name={'userName'} placeholder={'Username'} /></div>
                                 <div><input onChange={this.changeInputState} className={'singleInput'} type={'text'} name={'password'} placeholder={'Password'} /></div>
                             </div>
                             <div className={'actionsDiv'}>

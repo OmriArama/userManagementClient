@@ -9,8 +9,8 @@ export const registerUser = (userToAdd: IUser): Promise<IUser> => {
         })
 }
 
-export const searchByUserName = (userName: string): Promise<IUser> => {
-    return axios.get<IUser>(`${config.userMangementBaseUrl}/users/searchByUserName/${userName}`, { headers: { 'Content-Type': 'application/json', 'Accept': '*/*' } })
+export const Login = (userNameToLogin: string,passwordToLogin:string): Promise<IUser> => {
+    return axios.post<IUser>(`${config.userMangementBaseUrl}/users/Login`,{userName:userNameToLogin,password:passwordToLogin} ,{ headers: { 'Content-Type': 'application/json', 'Accept': '*/*' } })
         .then(res => {
             return res.data as IUser
         })
