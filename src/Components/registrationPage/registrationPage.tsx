@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import * as UserActions from '../../Actions/UserActions';
 
 type State = {
+    showError: boolean;
     ToRegister: boolean,
     firstName: string;
     lastName: string;
@@ -28,6 +29,7 @@ class RegistrationPage extends React.Component<Props, State>{
     constructor(props: Props) {
         super(props);
         this.state = {
+            showError: false,
             ToRegister: true,
             firstName: '',
             lastName: '',
@@ -51,11 +53,17 @@ class RegistrationPage extends React.Component<Props, State>{
             .then(foundUser => {
                 this.props.loginUser(foundUser)
             })
+            .catch(() => {
+                this.setState({
+                    showError: true
+                })
+            })
     }
 
     changeLoginStatus = () => {
         this.setState({
-            ToRegister: !this.state.ToRegister
+            ToRegister: !this.state.ToRegister,
+            showError:false,
         })
     }
     submitForm = () => {
@@ -72,6 +80,11 @@ class RegistrationPage extends React.Component<Props, State>{
                 .then(user => {
                     this.props.loginUser(user)
                 })
+                .catch(() => {
+                    this.setState({
+                        showError: true
+                    })
+                })
         }
 
     }
@@ -82,10 +95,19 @@ class RegistrationPage extends React.Component<Props, State>{
                 <img src={logo} alt={'logo'} />
                 {this.state.ToRegister ?
                     <div className={'form'}>
-                        <Fragment> <div>
-                            <input onChange={this.changeInputState} type={'text'} name={'firstName'} placeholder={'First name'} />
-                            <input onChange={this.changeInputState} type={'text'} name={'lastName'} placeholder={'Last name'} />
-                        </div>
+
+                        <Fragment>
+                            {this.state.showError ?
+                                <span style={{
+                                    color: 'red',
+                                    position: 'relative', left: '25%'
+                                }}>username is already taken</span> :
+                                null
+                            }
+                            <div>
+                                <input onChange={this.changeInputState} type={'text'} name={'firstName'} placeholder={'First name'} />
+                                <input onChange={this.changeInputState} type={'text'} name={'lastName'} placeholder={'Last name'} />
+                            </div>
                             <div><input onChange={this.changeInputState} className={'singleInput'} type={'text'} name={'email'} placeholder={'Email'} /></div>
                             <div><input onChange={this.changeInputState} className={'singleInput'} type={'text'} name={'userName'} placeholder={'Username'} /></div>
                             <div><input onChange={this.changeInputState} className={'singleInput'} type={'text'} name={'password'} placeholder={'Password'} /></div>
@@ -99,6 +121,13 @@ class RegistrationPage extends React.Component<Props, State>{
                     <div>
                         <div className={'loginForm'}>
                             <div style={{ marginTop: '10%' }}>
+                            {this.state.showError ?
+                                <span style={{
+                                    color: 'red',
+                                    position: 'relative', left: '25%'
+                                }}>incorrect password or username</span> :
+                                null
+                            }
                                 <div><input onChange={this.changeInputState} className={'singleInput'} type={'text'} name={'userName'} placeholder={'Username'} /></div>
                                 <div><input onChange={this.changeInputState} className={'singleInput'} type={'text'} name={'password'} placeholder={'Password'} /></div>
                             </div>
